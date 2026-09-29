@@ -81,7 +81,7 @@ p.nc.nsteps = 50;    % maximum number of continuation points if not specified el
 p.sol.ds = 0.01;     % initial ds value
 p.nc.dsmax = 0.02;   % maximum ds value, decrease for smoother curve
 p.nc.dlammax = 0.05; % maximum displacement in lambda
-p.nc.lammin = 0.048; % minimal value of lambda
+p.nc.lammin = 0.001; % minimal value of lambda
 p.nc.lammax = 10; % maximal value of lambda
 
 %create frac laplace matrix

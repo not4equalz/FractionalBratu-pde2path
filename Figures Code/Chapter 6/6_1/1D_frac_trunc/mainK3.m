@@ -6,7 +6,7 @@ addpath("Trunc1D\", "Trunc1Df\")
 alpha = [0.5, 0.7, 0.9];
 lx=1;
 nx=100;
-laminit =0.51;
+laminit =0.01;
 K=3;
 A=1;
 d=1;
@@ -19,7 +19,7 @@ if ~exist('K3','dir')
 end
 
 
-%classical DONE
+%% classical DONE
 for i=1:2
 
 p=[];
@@ -27,7 +27,7 @@ k = 1+(i-1)*2;
 if k==1
 p=bratu_init(p,0.5*lx,nx, laminit, d, K, k, 1, 1, 0);
 else
-p=bratu_init(p,0.5*lx,nx, laminit, d, K, k, 1, 1, 15+25*(k-1)/2);
+p=bratu_init(p,0.5*lx,nx, laminit+0.46, d, K, k, 1, 1, 15+25*(k-1)/2);
 end
 
 branchname = fullfile(sprintf('K3/p/p%d', i));
@@ -41,55 +41,19 @@ end
 %% fractional
 
 
-%for i=1:length(alpha)
- %   for j=1:3
- %   q=[];
- %   k = 1+(j-1)*2;
- %   q= bratuf_init(p,0.5*lx,nx, laminit*pi^(2*(alpha(i)-1)), d, K, k, 1, 1, 15+25*(k-1)/2, alpha(i));
- %   bp1 = fullfile('K3', sprintf('q%d',i));
-  %  branchname = fullfile(bp1,sprintf('q%d',j));
-%    q = setfn(q,branchname);
- %   q = cont(q, 40);
-%    close all;
-%    end
-%end
-
-%brute force trial and error
-% alpha=0.5
-alp = alpha(1);
-for j=1:2
+for i=1:length(alpha)
     q=[];
-    k = 1+(j-1)*2;
-    if j==1
-        q= bratuf_init(p,0.5*lx,nx, laminit, d, K, k, 1, 1, 0, alp);
-    end
-    if j==2
-        q= bratuf_init(p,0.5*lx,nx, laminit, d, K, k, 1, 1, 30, alp);
-    end
-    bp1 = fullfile('K3', sprintf('q%d', 1));
-    branchname = fullfile(bp1,sprintf('q%d',j));
+    
+    q= bratuf_init(p,0.5*lx,nx, laminit, d, K, 1, 1, 1,0, alpha(i));
+    
+    bp1 = fullfile('K3', sprintf('q%d',i));
+    branchname = fullfile(bp1);
     q = setfn(q,branchname);
-    q = cont(q, 1000);
+    q = cont(q, 600);
     close all;
+    
 end
 
-%% alpha=0.7
-alp = alpha(2);
-for j=1:2
-    q=[];
-    k = 1+(j-1)*2;
-    if j==1
-        q= bratuf_init(p,0.5*lx,nx, laminit, d, K, k, 1, 1, 0, alp);
-    end
-    if j==2
-        q= bratuf_init(p,0.5*lx,nx, laminit, d, K, k, 1, 1,32, alp);
-    end  
-    bp1 = fullfile('K3', sprintf('q%d', 1));
-    branchname = fullfile(bp1,sprintf('q%d',j));
-    q = setfn(q,branchname);
-    q = cont(q, 1000);
-    close all;
-end
 
 %% plot
 lightBlue = [0.35, 0.65, 0.90];
@@ -99,16 +63,16 @@ theme(figure(3), "light");
 hold on;
 grid on;
 box on;
-for i= 1:length(alpha)-1
+for i= 1:length(alpha)
     t = (alpha(i) - min(alpha)) / (max(alpha) - min(alpha));
     cols(i,:) = (1-t)*lightBlue + t*darkBlue;
-    for j=1:2
+    
     bp1 = fullfile('K3', sprintf('q%d', i));
-    branchname = fullfile(bp1,sprintf('q%d',j));
+    branchname = fullfile(bp1);
        
     plotbra(branchname, 3,1,'cl', cols(i,:));
     
-    end
+    
    
     
 end
@@ -118,10 +82,10 @@ for i=1:2
     branchname = fullfile(sprintf('K3/p/p%d', i));
     plotbra(branchname, 3,1,'cl', 'r');
 end
-ylim([0,12]);
+ylim([0,25]);
 xlabel('$\lambda$', 'Interpreter', 'latex', 'FontSize', 16);
 ylabel('$\|u\|_{\infty}$', 'Interpreter', 'latex', 'FontSize', 16);
-title('3D Fractional Bifurcation Diagram for different values of $\alpha$', 'Interpreter','latex', 'FontSize', 16);
+title('1D Fractional Bifurcation Diagram for different values of $\alpha$', 'Interpreter','latex', 'FontSize', 16);
 % create normal dummy legend entries
 h_frac  = plot(nan, nan, 'Color', lightBlue, 'LineWidth', 2);
 h_class = plot(nan, nan, 'r', 'LineWidth', 2);

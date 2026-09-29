@@ -3,7 +3,7 @@ addpath("1D\", "2D\", "3D\");
 close all; keep pphome;
 %% Initialization
 %truncation depth M
-M=3;
+M=5;
 
 
 %number of intervals of dx (so this is equal to N-1)
@@ -21,7 +21,7 @@ p = bratu_init(p, 0.5*lx, nx, laminit, 3, M,3,3,3, 10);
 %% Continuation
 % Continue for at most 400 points 
 tic;
-p = cont(p, 400);
+p = cont(p, 20);
 time = toc;
 
 %% Draw iso-surfaces

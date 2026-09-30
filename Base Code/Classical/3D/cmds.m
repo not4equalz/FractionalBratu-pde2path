@@ -15,7 +15,6 @@ q=[];
 q = bratu3D_init(q, 0.5*lx, nx, laminit);
 
 %% Continuation
-% Continue for at most 2000 points 
 tic;
 q = cont(q, 1115);
 time = toc;

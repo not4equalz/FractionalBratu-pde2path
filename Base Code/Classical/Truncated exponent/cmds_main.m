@@ -4,7 +4,7 @@ close all; keep pphome;
 %% Initialization
 %dimension d and truncation depth M
 d=2;
-M=3;
+K=3;
 
 
 %number of intervals of dx (so this is equal to N-1)
@@ -17,7 +17,7 @@ laminit = -1;        %initial lambda
 
 % Initialize Problem
 p=[];
-p = bratu_init(p, 0.5*lx, nx, laminit, d, M,1,1,1,1);
+p = bratu_init(p, 0.5*lx, nx, laminit, d, K,1,1,1,1);
 
 %% Continuation
 % Continue for at most 400 points 

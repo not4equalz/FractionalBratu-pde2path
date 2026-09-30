@@ -1,4 +1,4 @@
-close all;
+close all; keep pphome;
 
 %Given lambda Compare Theta with sqrt(2*lam)cosh(theta/4)
 lambda = [1 3.51 10];

@@ -11,7 +11,7 @@
 % The original work is licensed under the
 % Creative Commons Attribution 4.0 International License (CC BY 4.0).
 %
-% I modified the code to include a progress bar.
+% We modified the code to include a progress bar.
 
 
 function Ks = FractionalLaplacian(K,M,np,h,s)

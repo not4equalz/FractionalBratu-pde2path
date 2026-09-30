@@ -4,7 +4,7 @@ close all; keep pphome;
 %% Initialization
 %dimension d and truncation depth M
 d=3;
-M=3;
+K=3;
 
 %fractional order alpha
 alpha = 0.75;
@@ -19,7 +19,7 @@ laminit = 0;        %initial lambda
 
 % Initialize Problem
 p=[];
-p = bratu_init(p, 0.5*lx, nx, laminit, d, M,1,1,1,1, alpha);
+p = bratu_init(p, 0.5*lx, nx, laminit, d, K,1,1,1,1, alpha);
 
 %% Continuation
 % Continue for at most 400 points 

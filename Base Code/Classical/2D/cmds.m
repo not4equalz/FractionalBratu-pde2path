@@ -15,7 +15,7 @@ p=[];
 p = bratu2D_init(p, 0.5*lx, nx, laminit);
 
 %% Continuation
-% Continue for at most 1300 points 
+% Continue for at most 1500 points 
 tic;
 p = cont(p, 1500);
 time = toc;

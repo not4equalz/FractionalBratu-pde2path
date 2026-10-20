@@ -36,3 +36,8 @@ The implementation of the spectral fractional Laplacian is based on the numerica
 > **“Numerical continuation for fractional PDEs: sharp teeth and bloated snakes,”**
 > *Communications in Nonlinear Science and Numerical Simulation*, vol. 98, 105762, 2021.
 > DOI: https://doi.org/10.1016/j.cnsns.2021.105762
+
+If you use this code in your research, please cite the corresponding master's thesis:
+
+> van de Weerd, N. (2026). *Numerical Bifurcation Analysis of Fractional Bratu-Picard Models*. Master's thesis, Utrecht University.  
+> https://studenttheses.uu.nl/handle/20.500.12932/53015 
